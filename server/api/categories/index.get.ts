@@ -1,6 +1,6 @@
 import { db } from '~/db'
 import { productGroups } from '~/db/schema'
-import { defineEventHandler, createError } from 'h3'
+import { defineEventHandler } from 'h3'
 import { asc, isNull, desc } from 'drizzle-orm'
 
 export default defineEventHandler(async () => {
