@@ -1,0 +1,3 @@
+-- DROP TABLE `characteristic_values`;--> statement-breakpoint
+-- DROP TABLE `characteristics`;--> statement-breakpoint
+-- DROP TABLE `product_characteristics`;

@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1756711333450,
+      "tag": "0000_messy_vin_gonzales",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1756987731476,
+      "tag": "0001_mixed_red_skull",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1758200162813,
+      "tag": "0002_misty_hitman",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1758249889927,
+      "tag": "0003_late_deathstrike",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1758251716473,
+      "tag": "0004_careful_frightful_four",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1758647635836,
+      "tag": "0005_fresh_karen_page",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1758709467280,
+      "tag": "0006_lucky_wasp",
+      "breakpoints": true
+    }
+  ]
+}

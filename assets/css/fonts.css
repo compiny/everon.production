@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Open-Sans';
+    font-weight: 400;
+    src: url('/public/fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Open-Sans';
+    font-weight: 600;
+    src: url('/public/fonts/OpenSans-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Open-Sans';
+    font-weight: 700;
+    src: url('/public/fonts/OpenSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'LibreFranklin';
+    font-weight: 400;
+    src: url('/public/fonts/LibreFranklin-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'LibreFranklin';
+    font-weight: 600;
+    src: url('/public/fonts/LibreFranklin-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'LibreFranklin';
+    font-weight: 700;
+    src: url('/public/fonts/LibreFranklin-Bold.ttf');
+}

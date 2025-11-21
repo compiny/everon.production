@@ -1,0 +1,4 @@
+const ProductAttributes_vue_vue_type_style_index_0_scoped_c16dd7fc_lang = ".product-attributes[data-v-c16dd7fc]{margin-bottom:20px}.section-label[data-v-c16dd7fc]{color:#333;display:block;font-weight:700;margin-bottom:12px}.attribute-row[data-v-c16dd7fc]{align-items:center;display:flex;gap:10px;margin-bottom:10px}.attribute-name[data-v-c16dd7fc],.attribute-value[data-v-c16dd7fc]{border:1px solid #ddd;border-radius:4px;flex:1;padding:8px 12px}.remove-btn[data-v-c16dd7fc]{background:#f44;padding:8px 12px}.add-attribute-btn[data-v-c16dd7fc],.remove-btn[data-v-c16dd7fc]{border:none;border-radius:4px;color:#fff;cursor:pointer}.add-attribute-btn[data-v-c16dd7fc]{background:#4caf50;margin-top:10px;padding:10px 16px}.no-attributes[data-v-c16dd7fc]{color:#888;font-style:italic;padding:20px;text-align:center}";
+
+export { ProductAttributes_vue_vue_type_style_index_0_scoped_c16dd7fc_lang as P };
+//# sourceMappingURL=ProductAttributes-styles-1.mjs-C6H335KA.mjs.map

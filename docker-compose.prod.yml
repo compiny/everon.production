@@ -1,0 +1,121 @@
+services:
+  # MySQL база данных
+  mysql:
+    image: mysql:8.0
+    container_name: everon_mysql_prod
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data_prod:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - everon_network
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+
+  # Nuxt приложение
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: everon_app_prod
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      NUXT_PUBLIC_YANDEX_STATIC_API_KEY: ${NUXT_PUBLIC_YANDEX_STATIC_API_KEY}
+    volumes:
+      - ./public/uploads:/app/public/uploads
+      - app_logs:/app/logs
+    networks:
+      - everon_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: everon_nginx_prod
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./ssl:/etc/nginx/ssl
+      - ./public/uploads:/var/www/uploads
+      - nginx_logs:/var/log/nginx
+    networks:
+      - everon_network
+    depends_on:
+      - app
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+
+  # Backup service
+  backup:
+    image: mysql:8.0
+    container_name: everon_backup
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./backups:/backups
+      - ./scripts/backup.sh:/backup.sh
+    networks:
+      - everon_network
+    depends_on:
+      - mysql
+    command: /bin/bash -c "chmod +x /backup.sh && /backup.sh"
+    profiles:
+      - backup
+
+volumes:
+  mysql_data_prod:
+    driver: local
+  app_logs:
+    driver: local
+  nginx_logs:
+    driver: local
+
+networks:
+  everon_network:
+    driver: bridge

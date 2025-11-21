@@ -1,0 +1,35 @@
+{
+  "name": "nuxt-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@egjs/flicking": "^4.14.0",
+    "@egjs/vue3-flicking": "^4.14.0",
+    "@nuxt/image": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "drizzle-orm": "^0.44.5",
+    "jsonwebtoken": "^9.0.2",
+    "md-editor-v3": "^6.0.1",
+    "mysql2": "^3.14.3",
+    "nuxt": "^4.0.3",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.3.0",
+    "dotenv": "^17.2.1",
+    "drizzle-kit": "^0.31.4"
+  }
+}

@@ -1,0 +1,4 @@
+const AppHeader_vue_vue_type_style_index_0_scoped_45c55bcd_lang = `.logo[data-v-45c55bcd]{margin-bottom:30px}.slogan[data-v-45c55bcd]{color:#fff;width:225px}@media (max-width:640px){.number[data-v-45c55bcd]{background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='25' fill='none' viewBox='0 0 16 25'%3E%3Cpath fill='%23041366' d='M3.2 0h9.6C14.567 0 16 1.373 16 3.067v18.4c0 1.693-1.433 3.066-3.2 3.066H3.2c-1.767 0-3.2-1.373-3.2-3.066v-18.4C0 1.373 1.433 0 3.2 0M1.6 21.467c0 .846.716 1.533 1.6 1.533h9.6c.883 0 1.6-.687 1.6-1.533v-18.4c0-.847-.716-1.534-1.6-1.534h-1.6c0 .847-.716 1.534-1.6 1.534H6.4c-.884 0-1.6-.687-1.6-1.534H3.2c-.884 0-1.6.687-1.6 1.534z'/%3E%3C/svg%3E") no-repeat 0;margin:0;padding:0 0 0 26px}.header-logo img[data-v-45c55bcd]{width:100%}}`;
+
+export { AppHeader_vue_vue_type_style_index_0_scoped_45c55bcd_lang as A };
+//# sourceMappingURL=AppHeader-styles-1.mjs-DiU60QJj.mjs.map

@@ -1,0 +1,29 @@
+-- CREATE TABLE `characteristic_values` (
+-- 	`id` int AUTO_INCREMENT NOT NULL,
+-- 	`characteristic_id` int NOT NULL,
+-- 	`value` varchar(255) NOT NULL,
+-- 	`created_at` timestamp NOT NULL DEFAULT (now()),
+-- 	CONSTRAINT `characteristic_values_id` PRIMARY KEY(`id`)
+-- );
+-- --> statement-breakpoint
+-- CREATE TABLE `characteristics` (
+-- 	`id` int AUTO_INCREMENT NOT NULL,
+-- 	`name` varchar(255) NOT NULL,
+-- 	`type` varchar(255) NOT NULL,
+-- 	`created_at` timestamp NOT NULL DEFAULT (now()),
+-- 	CONSTRAINT `characteristics_id` PRIMARY KEY(`id`)
+-- );
+-- --> statement-breakpoint
+-- CREATE TABLE `product_characteristics` (
+-- 	`id` int AUTO_INCREMENT NOT NULL,
+-- 	`product_id` int NOT NULL,
+-- 	`characteristic_id` int NOT NULL,
+-- 	`characteristic_value_id` int,
+-- 	`custom_value` text,
+-- 	`created_at` timestamp NOT NULL DEFAULT (now()),
+-- 	CONSTRAINT `product_characteristics_id` PRIMARY KEY(`id`)
+-- );
+-- --> statement-breakpoint
+-- ALTER TABLE `characteristic_values` ADD CONSTRAINT `characteristic_values_characteristic_id_characteristics_id_fk` FOREIGN KEY (`characteristic_id`) REFERENCES `characteristics`(`id`) ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+-- ALTER TABLE `product_characteristics` ADD CONSTRAINT `product_characteristics_characteristic_id_characteristics_id_fk` FOREIGN KEY (`characteristic_id`) REFERENCES `characteristics`(`id`) ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+-- ALTER TABLE `product_characteristics` ADD CONSTRAINT `product_characteristics_characteristic_value_id_characteristic_values_id_fk` FOREIGN KEY (`characteristic_value_id`) REFERENCES `characteristic_values`(`id`) ON DELETE no action ON UPDATE no action;
