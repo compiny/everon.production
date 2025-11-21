@@ -38,6 +38,9 @@ RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 COPY --from=build --chown=nuxt:nodejs /app/.output ./.output
 COPY --from=build --chown=nuxt:nodejs /app/public ./public
 
+# Создаем директорию uploads с правильными правами
+RUN mkdir -p /app/public/uploads && chown -R nuxt:nodejs /app/public/uploads
+
 # Копируем скрипты для миграций
 COPY --chown=nuxt:nodejs server/migrate.ts ./
 COPY --chown=nuxt:nodejs db ./db

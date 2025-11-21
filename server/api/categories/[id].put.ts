@@ -1,7 +1,7 @@
 import { db } from '~/db'
 import { productGroups } from '~/db/schema'
 import { eq } from 'drizzle-orm'
-import { defineEventHandler, readBody, getRouterParam } from 'h3'
+import { defineEventHandler, readBody, getRouterParam, createError } from 'h3'
 
 export default defineEventHandler(async (event) => {
   try {
