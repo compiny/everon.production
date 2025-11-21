@@ -1,2 +1,4 @@
 # Project exclude paths
 /server/utils/database.js
+/node_modules
+.idea

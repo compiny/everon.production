@@ -1,5 +1,5 @@
-import { defineEventHandler, readMultipartFormData } from 'h3'
-import { writeFile } from 'fs/promises'
+import { defineEventHandler, readMultipartFormData, createError } from 'h3'
+import { writeFile, mkdir } from 'fs/promises'
 import { join } from 'path'
 
 export default defineEventHandler(async (event) => {
@@ -14,11 +14,15 @@ export default defineEventHandler(async (event) => {
             })
         }
 
+        // Создаем директорию uploads, если её нет
+        const uploadsDir = join(process.cwd(), 'public', 'uploads')
+        await mkdir(uploadsDir, { recursive: true })
+
         // Генерируем уникальное имя файла
         const timestamp = Date.now()
         const extension = imageFile.filename?.split('.').pop() || 'png'
         const fileName = `image-${timestamp}.${extension}`
-        const uploadPath = join(process.cwd(), 'public', 'uploads', fileName)
+        const uploadPath = join(uploadsDir, fileName)
 
         // Сохраняем файл
         await writeFile(uploadPath, imageFile.data)
