@@ -26,6 +26,9 @@ WORKDIR /app
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nuxt -u 1001
 
+# Устанавливаем su-exec для переключения пользователя в entrypoint
+RUN apk add --no-cache su-exec
+
 # Копируем манифесты
 COPY package*.json ./
 
@@ -47,8 +50,9 @@ COPY --chown=nuxt:nodejs db ./db
 COPY --chown=nuxt:nodejs migrations ./migrations
 COPY --chown=nuxt:nodejs drizzle.config.ts ./
 
-# Переключаемся на пользователя nuxt
-USER nuxt
+# Копируем entrypoint скрипт и делаем его исполняемым
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Открываем порт
 EXPOSE 3000
@@ -58,5 +62,8 @@ ENV NODE_ENV=production
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 
-# Запускаем приложение
+# Устанавливаем entrypoint (будет запускаться от root для исправления прав)
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+# Запускаем приложение (будет переключение на пользователя nuxt в entrypoint)
 CMD ["node", ".output/server/index.mjs"]
